@@ -1,0 +1,84 @@
+
+package rpg;
+
+
+public class Character {
+    private String name;
+    private int strength;
+    private int dexterity;
+    private int intelligence;
+    private int currentLife;
+    private int maxlife;
+    
+    static Dice dice = new Dice();
+  
+        String n = "KZ";
+        int s = dice.roll();
+        int d = dice.roll();
+        int i = dice.roll();
+        int max = dice.roll() * 100;
+        int curr = maxlife;
+        
+    
+    public Character(){
+        name = " ";
+        s = dice.roll();
+        currentLife = max;
+        
+        
+         
+    
+    }   
+    public Character(String n, int s, int d, int i){
+        n = "";
+        s = dice.roll();
+      
+    }
+    
+    public int attack(){
+        return currentLife;
+    }
+    public void wound(int damage){
+        damage = dice.roll() + s;
+        this.currentLife -= damage;
+    }
+    public void heal(int heal){
+        heal = dice.roll();
+        this.currentLife += heal;
+        
+    }
+    
+    public String getName(){
+        return n;
+    }
+    public int getStrength(){
+        return s;
+    }
+    public int getDexterity(){
+        return dexterity;
+    }
+    public int getIntelligence(){
+        return intelligence;
+    }
+    public int getCurrentLife(){
+        return currentLife;
+    
+    }
+    public int getMaxLife(){
+        return maxlife;
+    
+    }
+    public void setName(String name){
+        this.n = name;
+    }
+    public void setStrength (int strength){
+        this.s = dice.roll();
+    }
+    public void setDexterity (int dexterity){
+        this.d = dice.roll();
+    }
+    public void setIntelligence(int intelligence){
+        this.i = dice.roll();
+    }
+    
+}
