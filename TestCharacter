@@ -1,0 +1,29 @@
+package rpg;
+
+public class TestCharacter {
+
+    public static void main(String[] args) {
+    
+        Dice dice = new Dice();
+        Character p1 = new Character();
+        Character p2 = new Character();
+        
+        
+        
+    //   for(int i = 1; i <= 3; i++){
+    //       System.out.println("Round: " + i);
+           p1.setName("Bob");
+           p2.setName("Joe");
+        System.out.println(p1.getName() +":" + p1.getCurrentLife());
+        System.out.println(p2.getName() + ":" + p2.getCurrentLife());
+        System.out.println(p1.getName() + " attacks " + p2.getName() +  " for " + p1.getStrength());
+        System.out.println(p2.getName() + " attacks " + p1.getName() +  " for " + p2.getStrength());
+        
+          p1.attack();
+        
+       } 
+        
+    
+    }
+    
+//}
