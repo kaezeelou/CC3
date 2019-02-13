@@ -10,20 +10,41 @@ public class TestCharacter {
         
         
         
-    //   for(int i = 1; i <= 3; i++){
-    //       System.out.println("Round: " + i);
+   
            p1.setName("Bob");
+           p1.setStrength(5);
+           p1.setMaxLife();
+           p1.setDex(4);
+           p1.setIntel(4);
+           
            p2.setName("Joe");
-        System.out.println(p1.getName() +":" + p1.getCurrentLife());
-        System.out.println(p2.getName() + ":" + p2.getCurrentLife());
-        System.out.println(p1.getName() + " attacks " + p2.getName() +  " for " + p1.getStrength());
-        System.out.println(p2.getName() + " attacks " + p1.getName() +  " for " + p2.getStrength());
-        
-          p1.attack();
-        
+           p2.setStrength(8);
+           p2.setMaxLife();
+           p2.setDex(6);
+           p2.setIntel(6);
+           
+           int a = 1;
+           for (int i = 0; i<=2; i++) {
+               System.out.println("Round " +(i+a));
+               System.out.println(p1.getName() +":" + p1.getCurrentLife());
+               System.out.println(p2.getName() + ":" + p2.getCurrentLife());
+               p1.wound(dice.roll());
+               System.out.println(p2.getName() + " attacks " + p1.getName() + " for " + p1.getDamage());
+               p2.wound(dice.roll());
+               System.out.println(p1.getName() + " attacks " + p2.getName() + " for " + p2.getDamage());
+               System.out.println(p1.getName() + " HP " + p1.getCurrentLife());
+               System.out.println(p2.getName() + " HP " + p2.getCurrentLife());
+               System.out.println(" ");
+         
+           }
+           if (p1.getCurrentLife() < p2.getCurrentLife()){
+               System.out.println(p2.getName() + " wins!");
+           }else if (p2.getCurrentLife()<= p2.getCurrentLife()){
+               System.out.println(p1.getName() + " wins!");
+           }
        } 
         
     
     }
-    
-//}
+
+
