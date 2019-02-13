@@ -1,5 +1,6 @@
 
 
+
 package rpg;
 
 
@@ -7,39 +8,39 @@ public class Character {
     
     static Dice dice = new Dice();
     
-    private String name;
-    private int Strength;
-    private int dexterity;
-    private int intelligence;
-    private int MaxLife;
-    private int CurrentLife;
-    private int d;
+    protected String name;
+    protected int strength;
+    protected int dexterity;
+    protected int intelligence;
+    protected int maxLife;
+    protected int currentLife;
+    protected int d;
      
 
     public Character(){
         name = "";
-        Strength = 6;
-        dexterity = 6;
+        strength = 5;
+        dexterity = 5;
         intelligence = 5;
-        MaxLife = 100;
-        CurrentLife = MaxLife;
+        maxLife = dice.roll() + 100;
+        currentLife = maxLife;
     }
     
 
-    public Character(String n, int s, int d, int i, int m) {
+    public Character(String n, int s, int d, int i) {
         this.name = n;
-        this.Strength = s;
+        this.strength = s;
         this.dexterity = d;
         this.intelligence = i;
-        this.CurrentLife = m;
-        this.MaxLife = m;
+        this.maxLife = dice.roll() + 100;
+        this.currentLife = maxLife;
     }
     
     public String getName(){
         return name;
     }
     public int getStrength(){
-        return Strength;
+        return strength;
     }
     public int getDexterity(){
         return dexterity;
@@ -48,10 +49,10 @@ public class Character {
         return intelligence;
     }
     public int getCurrentLife(){
-        return CurrentLife;
+        return currentLife;
     }
     public int getMaxLife(){
-        return MaxLife;
+        return maxLife;
     }
     public int getDamage(){
         return d;
@@ -62,32 +63,33 @@ public class Character {
         this.name = name;
     }
     public void setStrength(int s){
-        this.Strength = s;
+        this.strength = s;
     }
     
     public void setDex(int d){
         this.dexterity = d;
     }
-    public void setIntel(int il){
-        this.intelligence = il ;
+    public void setIntel(int i){
+        this.intelligence = i ;
     }
     public void setCurrentLife(){
-        this.CurrentLife = MaxLife;
+        this.currentLife = maxLife;
     }
     public void setMaxLife(){
-        this.MaxLife = 100;
+        this.maxLife = 100;
     }
-    
     
     public int attack() {
-        return dice.roll();      
+        return dice.roll() * strength;      
     }
     public void wound(int damage) {
-        this.d = damage + this.Strength;
-        this.CurrentLife -= this.d;
+        this.d = damage + this.strength;
+        this.currentLife -= this.d;
     }
     public void heal(int heal) {
-        this.CurrentLife += heal;
+        if(currentLife < maxLife){
+        this.currentLife += heal;
+        }
     }
     
 }
