@@ -1,55 +1,272 @@
 
-
-
 package rpg;
 
-public class TestCharacter {
 
-    public static void main(String[] args) {
+public class Character {
     
-        Dice dice = new Dice();
-        Character p1 = new Character();
-        Character p2 = new Character();
-        
-        
-        
-   
-           p1.setName("Bob");
-           p1.setStrength(5);
-           p1.setMaxLife();
-           p1.setDex(5);
-           p1.setIntel(5);
-           
-           p2.setName("Joe");
-           p2.setStrength(5);
-           p2.setMaxLife();
-           p2.setDex(5);
-           p2.setIntel(5);
-           
-           int a = 1;
-           for (int i = 0; i<=2; i++) {
-               System.out.println("Round " +(i+a));
-               System.out.println(p1.getName() +":" + p1.getCurrentLife());
-               System.out.println(p2.getName() + ":" + p2.getCurrentLife());
-               int dmg1 = p1.attack();
-               p2.wound(dmg1);
-               System.out.println(p2.getName() + " attacks " + p1.getName() + " for " + dmg1);
-               int dmg2 = p2.attack();
-               p1.wound(dmg2);
-               System.out.println(p1.getName() + " attacks " + p2.getName() + " for " + dmg2);
-               System.out.println(p1.getName() + " HP " + p1.getCurrentLife());
-               System.out.println(p2.getName() + " HP " + p2.getCurrentLife());
-               System.out.println(" ");
-         
-           }
-           if (p1.getCurrentLife() < p2.getCurrentLife()){
-               System.out.println(p2.getName() + " wins!");
-           }else if (p2.getCurrentLife()<= p2.getCurrentLife()){
-               System.out.println(p1.getName() + " wins!");
-           }
-       } 
-        
+    static Dice dice = new Dice();
     
+    protected String name;
+    protected int strength;
+    protected int dexterity;
+    protected int intelligence;
+    protected int maxLife;
+    protected int currentLife;
+    protected int d;
+     
+
+    public Character(){
+        name = "";
+        strength = 5;
+        dexterity = 5;
+        intelligence = 5;
+        maxLife = dice.roll() + 100;
+        currentLife = maxLife;
     }
+    
 
+    public Character(String n, int s, int d, int i) {
+        this.name = n;
+        this.strength = s;
+        this.dexterity = d;
+        this.intelligence = i;
+        this.maxLife = dice.roll() + 100;
+        this.currentLife = maxLife;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    public int getStrength(){
+        return strength;
+    }
+    public int getDexterity(){
+        return dexterity;
+    }
+    public int getIntel(){
+        return intelligence;
+    }
+    public int getCurrentLife(){
+        return currentLife;
+    }
+    public int getMaxLife(){
+        return maxLife;
+    }
+    
+    
+ 
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setStrength(int s){
+        this.strength = s;
+    }
+    
+    public void setDex(int d){
+        this.dexterity = d;
+    }
+    public void setIntel(int i){
+        this.intelligence = i ;
+    }
+    public void setCurrentLife(){
+        this.currentLife = maxLife;
+    }
+    public void setMaxLife(){
+        this.maxLife = 100;
+    }
+    
+    
+    public int attack() {
+        return dice.roll() * strength;      
+    }
+    public void wound(int damage) {
+      currentLife -= damage;
+    }
+    public void heal(int heal) {
+        if(currentLife < maxLife){
+        this.currentLife += heal;
+        }
+    }
+    
+}
+package rpg;
+
+
+public class Character {
+    
+    static Dice dice = new Dice();
+    
+    protected String name;
+    protected int strength;
+    protected int dexterity;
+    protected int intelligence;
+    protected int maxLife;
+    protected int currentLife;
+    protected int d;
+     
+
+    public Character(){
+        name = "";
+        strength = 5;
+        dexterity = 5;
+        intelligence = 5;
+        maxLife = dice.roll() + 100;
+        currentLife = maxLife;
+    }
+    
+
+    public Character(String n, int s, int d, int i) {
+        this.name = n;
+        this.strength = s;
+        this.dexterity = d;
+        this.intelligence = i;
+        this.maxLife = dice.roll() + 100;
+        this.currentLife = maxLife;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    public int getStrength(){
+        return strength;
+    }
+    public int getDexterity(){
+        return dexterity;
+    }
+    public int getIntel(){
+        return intelligence;
+    }
+    public int getCurrentLife(){
+        return currentLife;
+    }
+    public int getMaxLife(){
+        return maxLife;
+    }
+    
+    
+ 
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setStrength(int s){
+        this.strength = s;
+    }
+    
+    public void setDex(int d){
+        this.dexterity = d;
+    }
+    public void setIntel(int i){
+        this.intelligence = i ;
+    }
+    public void setCurrentLife(){
+        this.currentLife = maxLife;
+    }
+    public void setMaxLife(){
+        this.maxLife = 100;
+    }
+    
+    
+    public int attack() {
+        return dice.roll() * strength;      
+    }
+    public void wound(int damage) {
+      currentLife -= damage;
+    }
+    public void heal(int heal) {
+        if(currentLife < maxLife){
+        this.currentLife += heal;
+        }
+    }
+    
+}
+package rpg;
+
+
+public class Character {
+    
+    static Dice dice = new Dice();
+    
+    protected String name;
+    protected int strength;
+    protected int dexterity;
+    protected int intelligence;
+    protected int maxLife;
+    protected int currentLife;
+    protected int d;
+     
+
+    public Character(){
+        name = "";
+        strength = 5;
+        dexterity = 5;
+        intelligence = 5;
+        maxLife = dice.roll() + 100;
+        currentLife = maxLife;
+    }
+    
+
+    public Character(String n, int s, int d, int i) {
+        this.name = n;
+        this.strength = s;
+        this.dexterity = d;
+        this.intelligence = i;
+        this.maxLife = dice.roll() + 100;
+        this.currentLife = maxLife;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    public int getStrength(){
+        return strength;
+    }
+    public int getDexterity(){
+        return dexterity;
+    }
+    public int getIntel(){
+        return intelligence;
+    }
+    public int getCurrentLife(){
+        return currentLife;
+    }
+    public int getMaxLife(){
+        return maxLife;
+    }
+    
+    
+ 
+    public void setName(String name){
+        this.name = name;
+    }
+    public void setStrength(int s){
+        this.strength = s;
+    }
+    
+    public void setDex(int d){
+        this.dexterity = d;
+    }
+    public void setIntel(int i){
+        this.intelligence = i ;
+    }
+    public void setCurrentLife(){
+        this.currentLife = maxLife;
+    }
+    public void setMaxLife(){
+        this.maxLife = 100;
+    }
+    
+    
+    public int attack() {
+        return dice.roll() * strength;      
+    }
+    public void wound(int damage) {
+      currentLife -= damage;
+    }
+    public void heal(int heal) {
+        if(currentLife < maxLife){
+        this.currentLife += heal;
+        }
+    }
+    
+}
 
